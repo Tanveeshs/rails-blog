@@ -4,7 +4,7 @@ class BlogPost < ApplicationRecord
 
   scope :sorted, -> { order(published_at: :desc, updated_at: :desc) }
   scope :published, -> { where("published_at<=?", Time.current) }
-  scope :schedules, -> { where("published_at>?", Time.current) }
+  scope :scheduled, -> { where("published_at>?", Time.current) }
   scope :draft, -> { where(published_at: nil) }
 
   def draft?
